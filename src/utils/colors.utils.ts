@@ -41,12 +41,13 @@ const hexToHSL = (H: string): [h: number, s: number, l: number] => {
   return [h, s, l];
 };
 
-const getGradientColors = (hex: string): [string, string] => {
-  console.log('....');
-  const [h, s, l] = hexToHSL(hex);
+export const getGradientColors = (hex: string): [string, string] => {
+  let [h, s, l] = hexToHSL(hex);
 
-  const pastelColor = `hsl(${h}, ${40}%, ${Math.max(0, l - 20)})`;
-  const saturatedColor = `hsl(${h}, ${80}%, ${20})`;
+  l = +l.toFixed(0)
+
+  const pastelColor = `hsl(${h}, ${40}%, ${Math.max(0, l - 20)}%)`;
+  const saturatedColor = `hsl(${h}, ${80}%, ${20}%)`;
 
   return [pastelColor, saturatedColor];
 };

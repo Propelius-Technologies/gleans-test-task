@@ -4,15 +4,19 @@ import { useState } from 'react';
 /* @ts-ignore */
 import { ColorExtractor } from 'react-color-extractor';
 
+import { getGradientColors } from 'src/utils/colors.utils';
+
 import textStyles from 'src/styles/typography.module.css';
+import { getRandomEmojies } from '@/utils/content.utils';
 
 const ImageAdder = () => {
   const [gradientColors, setColors] = useState<string[]>([]);
 
   const extractColors = (hex: string) => {
     const colors = getGradientColors(hex);
+    console.log({ colors });
 
-    return setColors(colors);
+    setColors(colors);
   };
 
   return (
@@ -22,8 +26,12 @@ const ImageAdder = () => {
         background: `radial-gradient(121.30% 121.30% at 50.43% -0.00%, ${gradientColors[0]} 0%, ${gradientColors[1]} 100%), rgba(0, 0, 0, 0.20)`,
       }}
     >
-      <ColorExtractor getColors={(colors: string[]) => setColors(colors)}>
-        <img src='/dance_emoji.png' alt='' />
+      <ColorExtractor
+        getColors={(colors: string[]) => {
+          extractColors(colors[0]);
+        }}
+      >
+        <img src={getRandomEmojies()} className='h-20 w-20' alt='' />
       </ColorExtractor>
       <div className='flex items-center gap-x-3 px-6'>
         <Icon
@@ -41,4 +49,4 @@ const ImageAdder = () => {
   );
 };
 
-export default ImageAdder
+export default ImageAdder;

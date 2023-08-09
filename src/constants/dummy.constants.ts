@@ -16,3 +16,10 @@ export const tags: Tag[] = [
   { name: 'Desgin', id: '3' },
   { name: 'UX', id: '4' },
 ];
+
+export const emojiURIs = [
+  '/dance_emoji.png',
+  '/in_love.png',
+  '/ninja.png',
+  '/smiling.png',
+];
