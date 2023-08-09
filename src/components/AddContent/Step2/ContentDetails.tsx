@@ -30,7 +30,7 @@ const ContentDetails: FC<Props> = ({
   moveBack,
 }) => {
   const descriptionRef = useRef<HTMLDivElement>(null);
-  const [titleTouched, setTitleTouched] = useState<boolean>(false);
+  const [titleTouched, setTitleTouched] = useState<boolean>(!content.title);
   const [descriptionExpanded, setDescriptionExpanded] =
     useState<boolean>(false);
 
@@ -106,11 +106,12 @@ const ContentDetails: FC<Props> = ({
               </p>
             ) : (
               <input
+                placeholder='Add Title'
                 value={content.title}
                 autoFocus
                 id='title'
                 onChange={handleChange}
-                onBlur={() => setTitleTouched(false)}
+                onBlur={() => content.title && setTitleTouched(false)}
                 className={`block mx-auto pl-4 border-b border-b-white bg-ga-grey bg-opacity-20 text-white h-11 w-60 outline-none border-0 ${textStyles.subtitle_1_normal}`}
               />
             )}
