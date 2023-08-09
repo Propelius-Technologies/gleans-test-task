@@ -1,6 +1,6 @@
 'use client';
 import Icon from 'src/components/shared/Icon';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 /* @ts-ignore */
 import { ColorExtractor } from 'react-color-extractor';
 
@@ -14,10 +14,11 @@ const ImageAdder = () => {
 
   const extractColors = (hex: string) => {
     const colors = getGradientColors(hex);
-    console.log({ colors });
 
     setColors(colors);
   };
+
+  const randomEmoji = useMemo(() => getRandomEmojies(), [])
 
   return (
     <div
@@ -31,7 +32,7 @@ const ImageAdder = () => {
           extractColors(colors[0]);
         }}
       >
-        <img src={getRandomEmojies()} className='h-20 w-20' alt='' />
+        <img src={randomEmoji} className='h-20 w-20' alt='' />
       </ColorExtractor>
       <div className='flex items-center gap-x-3 px-6'>
         <Icon

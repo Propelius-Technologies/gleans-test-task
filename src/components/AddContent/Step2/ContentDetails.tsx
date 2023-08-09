@@ -135,7 +135,7 @@ const ContentDetails: FC<Props> = ({
         {!descriptionExpanded && (
           <p
             onClick={toggleCollections}
-            className={`${textStyles.subtitle_1_normal} cursor-pointer font-primary flex items-center gap-x-1`}
+            className={`${textStyles.subtitle_1_normal} text-white cursor-pointer font-primary flex items-center gap-x-1`}
           >
             Add to collection
             <Icon name='collection_icon' className='w-3 h-2' color='#5E5E5E' />

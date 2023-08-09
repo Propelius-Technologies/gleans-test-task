@@ -19,7 +19,7 @@ const getButtonColor = (color: ButtonColor) => {
     case 'primary':
       return 'bg-white text-black';
     case 'secondary':
-      return 'bg-ga-button-grey text-whtie text-opacity-30';
+      return 'bg-ga-button-grey text-white text-opacity-30';
     case 'success':
       return 'bg-ga-success text-white';
   }

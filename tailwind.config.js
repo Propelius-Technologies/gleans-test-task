@@ -12,6 +12,9 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      borderRadius: {
+        '60px': '60px'
+      },
       colors: {
         'ga-grey': '#d9d9d9',
         'ga-text-gray': '#b9b9b9',

@@ -8,6 +8,7 @@ import ContentDetails from './ContentDetails';
 import { isEmpty } from 'lodash';
 import { getLinkMeta } from '@/utils/storage.utils';
 import { convertMetaToContent } from '@/utils/content.utils';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const defaultContent: Content = {
   title: 'Very very long title or collection name',
@@ -51,13 +52,19 @@ const Step2: FC<Props> = ({ moveToStep }) => {
           onSave={onCollectionSave}
         />
       ) : (
-        <ContentDetails
-          content={content}
-          toggleCollections={toggleCollections}
-          onContentUpate={handleContentUpdate}
-          onContentSave={onContentSave}
-          moveBack={moveBack}
-        />
+        <motion.div
+          className='flex grow flex-col items-center justify-between'
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <ContentDetails
+            content={content}
+            toggleCollections={toggleCollections}
+            onContentUpate={handleContentUpdate}
+            onContentSave={onContentSave}
+            moveBack={moveBack}
+          />
+        </motion.div>
       )}
     </div>
   );
