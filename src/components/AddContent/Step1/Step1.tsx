@@ -3,7 +3,7 @@ import textStyles from 'src/styles/typography.module.css';
 import Option from './Option';
 import LinkInput from './LinkInput';
 import { FC } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { LocalStorageKeys } from '@/constants/keys.constants';
 
 interface Props {

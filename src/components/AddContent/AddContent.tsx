@@ -18,7 +18,7 @@ const AddContent = () => {
         {activeStep === 1 && (
           <motion.div
             key='step-1'
-            className='fixed bottom-0 left-0 bg-zinc-900 bg-opacity-80 rounded-t-60px'
+            className='fixed bottom-0 left-0 bg-zinc-900 bg-opacity-80 rounded-t-60px w-full'
             initial={{ opacity: 0, bottom: '-100%' }}
             animate={{ opacity: 1, bottom: 0 }}
             exit={{ height: '100vh' }}
