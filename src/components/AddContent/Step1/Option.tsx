@@ -1,21 +1,21 @@
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import Image from 'next/image';
 import { FC } from 'react';
 import textStyles from 'src/styles/typography.module.css';
 
 interface Props {
   title: string;
   description: string;
-  src: string | StaticImport;
+  src: string;
   onClick?: () => void;
 }
 
 const Option: FC<Props> = ({ title, description, src, onClick }) => {
   return (
     <div onClick={onClick} className='w-32'>
-      <Image src={src} alt='' className='w-full aspect-square' />
+      <div className='w-full aspect-square'>
+        <img src={src} alt='' className='w-full' />
+      </div>
       <h5
-        className={`${textStyles.subtitle_1_bold} font-primary text-center text-white py-3`}
+        className={`${textStyles.subtitle_1_bold} font-primary text-center text-white pb-3`}
       >
         {title}
       </h5>

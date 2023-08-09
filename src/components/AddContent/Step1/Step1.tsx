@@ -26,13 +26,13 @@ const Step1: FC<Props> = ({ moveToStep }) => {
       <div className='flex w-full gap-x-12 justify-center pb-9'>
         {/* option  */}
         <Option
-          src=''
+          src='/create_glean.png'
           title='Create a Glean'
           description='Add content, links & descriptive text'
           onClick={() => moveToStep(2)}
         />
         <Option
-          src=''
+          src='/collection.svg'
           title='Collection'
           description='Organise gleans & direct links'
         />
