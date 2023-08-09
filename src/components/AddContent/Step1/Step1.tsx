@@ -4,12 +4,13 @@ import styles from './styles.module.css';
 import Option from './Option';
 import LinkInput from './LinkInput';
 import { FC } from 'react';
+import supabase from 'src/supabase/supabas.utils';
 interface Props {
   moveToStep: (step: number) => void;
 }
 
 const Step1: FC<Props> = ({ moveToStep }) => {
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     moveToStep(2);
   };
 
