@@ -4,7 +4,9 @@ import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
 import textStyles from 'src/styles/typography.module.css';
-import styles from './style.module.css'
+import styles from './style.module.css';
+import { LinkMeta } from '@/types/model';
+import { isUrlValid } from '@/utils/strings.utils';
 
 interface Props {
   handleSubmit: () => void;
@@ -27,6 +29,20 @@ const LinkInput: FC<Props> = ({ handleSubmit }) => {
 
   const onSubmit: FormEventHandler = async (evt) => {
     evt.preventDefault();
+
+    if (!isUrlValid(inputValue)) {
+      const meta: LinkMeta = {
+        title: inputValue,
+        description: '',
+        domain: '',
+        duration: 0,
+        images: [],
+        url: '',
+      };
+      handleSubmit();
+      setLinkMeta(meta);
+      return;
+    }
 
     try {
       setLoading(true);

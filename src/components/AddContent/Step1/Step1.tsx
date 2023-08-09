@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Step1: FC<Props> = ({ moveToStep }) => {
-  const handleSubmit = async () => {
+  const handleSubmit =  () => {
     moveToStep(2);
   };
 
