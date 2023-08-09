@@ -1,5 +1,6 @@
 'use client';
 import { FC, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { Collection } from 'src/types/model';
 import { collections } from 'src/constants/dummy.constants';
@@ -56,15 +57,22 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
         </h3>
       </div>
       <div className='flex flex-col gap-y-5 items-center'>
-        {collections.map((collection) => (
-          <CollectionTag
+        {collections.map((collection, i) => (
+          <motion.div
+            initial={{ y: '-100%' }}
+            animate={{ opacity: [0, 1], y: 0 }}
+            transition={{ delay: 0.08 * i }}
+            exit={{ x: '-100%', opacity: 0 }}
             key={collection.id}
-            collection={collection}
-            onClick={handleSelectCollection}
-            selected={selectedCollections.includes(collection)}
           >
-            {collection.name}
-          </CollectionTag>
+            <CollectionTag
+              collection={collection}
+              onClick={handleSelectCollection}
+              selected={selectedCollections.includes(collection)}
+            >
+              {collection.name}
+            </CollectionTag>
+          </motion.div>
         ))}
       </div>
       <div className='flex pb-12'>

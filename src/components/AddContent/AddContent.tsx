@@ -27,8 +27,6 @@ const AddContent = () => {
             <Step1 moveToStep={moveToStep} />
           </motion.div>
         )}
-        {/* </AnimatePresence> */}
-        {/* <AnimatePresence mode='wait' initial={false}> */}
         <motion.div
           key='step-2'
           initial={{ opacity: 0 }}
@@ -39,7 +37,11 @@ const AddContent = () => {
           {activeStep === 2 && <Step2 moveToStep={moveToStep} />}
         </motion.div>
         {activeStep === 3 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delayChildren: 0.2 }}
+          >
             <Done moveToStep={moveToStep} />
           </motion.div>
         )}

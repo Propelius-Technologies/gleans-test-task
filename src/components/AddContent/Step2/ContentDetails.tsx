@@ -1,5 +1,6 @@
 'use client';
 import { ChangeEventHandler, FC, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { Content, Tag } from 'src/types/model';
 import { tags } from 'src/constants/dummy.constants';
@@ -64,7 +65,9 @@ const ContentDetails: FC<Props> = ({
 
   return (
     <>
-      <div
+      <motion.div
+        exit={{ y: '-20px', opacity: 0 }}
+        transition={{ duration: 0.5 }}
         className={`flex flex-col items-center ${
           descriptionExpanded ? 'grow justify-center w-full' : ''
         }`}
@@ -122,9 +125,10 @@ const ContentDetails: FC<Props> = ({
 
         {!descriptionExpanded && (
           <div className='flex justify-center flex-wrap gap-x-3 gap-y-3 pt-7 pb-16'>
-            {tags.map((tag) => (
+            {tags.map((tag, index) => (
               <TagChip
                 key={tag.id}
+                index={index}
                 tag={tag}
                 onSelect={handleTagSelect}
                 onUnselect={handleTagUnselect}
@@ -141,15 +145,20 @@ const ContentDetails: FC<Props> = ({
             <Icon name='collection_icon' className='w-3 h-2' color='#5E5E5E' />
           </p>
         )}
-      </div>
-      <div className='flex gap-x-4 pb-12'>
+      </motion.div>
+      <motion.div
+        animate={{ y: 0 }}
+        exit={{ y: '-100%', opacity: 0 }}
+        transition={{ duration: 0.4 }}
+        className='flex gap-x-4 pb-12'
+      >
         <CustomButton onClick={handleBack} color='secondary'>
           Back
         </CustomButton>
         <CustomButton onClick={handleSave} color='primary'>
           {!descriptionExpanded ? 'Add Glean' : 'save'}
         </CustomButton>
-      </div>
+      </motion.div>
     </>
   );
 };

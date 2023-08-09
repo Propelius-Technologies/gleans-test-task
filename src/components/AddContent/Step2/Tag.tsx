@@ -1,5 +1,6 @@
 'use client';
 import { FC, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { Tag } from 'src/types/model';
 
@@ -7,11 +8,12 @@ import Icon from 'src/components/shared/Icon';
 
 interface Props {
   tag: Tag;
+  index: number;
   onSelect?: (x: Tag) => void;
   onUnselect?: (x: Tag) => void;
 }
 
-const TagChip: FC<Props> = ({ onSelect, onUnselect, tag }) => {
+const TagChip: FC<Props> = ({ onSelect, onUnselect, tag, index }) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   const handleSelect = () => {
@@ -26,7 +28,11 @@ const TagChip: FC<Props> = ({ onSelect, onUnselect, tag }) => {
   };
 
   return (
-    <div className='bg-ga-grey bg-opacity-10 rounded-full bg flex text-sm gap-x-2 items-center px-3 h-9 text-white font-primary'>
+    <motion.div
+      animate={{ opacity: [0, 1] }}
+      transition={{ delay: 0.15 * index }}
+      className='bg-ga-grey bg-opacity-10 rounded-full bg flex text-sm gap-x-2 items-center px-3 h-9 text-white font-primary'
+    >
       {tag.name}
       <div className=' items-center flex gap-x-2'>
         {' '}
@@ -46,7 +52,7 @@ const TagChip: FC<Props> = ({ onSelect, onUnselect, tag }) => {
           <Icon name='remove' className='w-2 h-2' color='#B9B9B9' />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
