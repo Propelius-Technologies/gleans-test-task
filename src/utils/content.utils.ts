@@ -1,13 +1,12 @@
-import { emojiURIs } from '@/constants/dummy.constants';
-import { Content, LinkMeta } from '@/types/model';
+import { emojiURIs } from '@/constants/dummy.constants'
+import { Content, LinkMeta } from '@/types/model'
 
 export const convertMetaToContent = (meta: LinkMeta): Content => ({
   collections: [],
   description: meta.description,
   tags: [],
   title: meta.title,
-  image: meta.images?.length ? meta.images[0] : '',
-});
+  image: meta.images?.length ? meta.images[0] : ''
+})
 
-export const getRandomEmojies = () =>
-  emojiURIs[Math.floor(Math.random() * emojiURIs.length)];
+export const getRandomEmojies = () => emojiURIs[Math.floor(Math.random() * emojiURIs.length)]

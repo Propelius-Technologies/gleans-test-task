@@ -1,1 +1,1 @@
-export const LocalStorageKeys = { LINK_META: 'LINK_META' };
+export const LocalStorageKeys = { LINK_META: 'LINK_META' }

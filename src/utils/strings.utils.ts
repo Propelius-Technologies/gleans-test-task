@@ -1,6 +1,6 @@
 export const removeHtmlTags = (inputString: string) => {
-  return inputString.replace(/<[^>]+>/g, '');
-};
+  return inputString.replace(/<[^>]+>/g, '')
+}
 
 export const isUrlValid = (str: string) => {
   const pattern = new RegExp(
@@ -11,7 +11,7 @@ export const isUrlValid = (str: string) => {
       '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
       '(\\#[-a-z\\d_]*)?$', // fragment locator
     'i'
-  );
+  )
 
-  return pattern.test(str);
-};
+  return pattern.test(str)
+}
