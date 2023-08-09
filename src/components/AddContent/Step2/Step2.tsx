@@ -1,7 +1,7 @@
 'use client';
 import { FC, useState } from 'react';
 
-import { Content } from 'src/types/model';
+import { Collection, Content } from 'src/types/model';
 
 import Collections from './Collections';
 import ContentDetails from './ContentDetails';
@@ -33,7 +33,7 @@ const Step2: FC<Props> = ({ moveToStep }) => {
     setContent((prev) => ({ ...prev, ...content }));
   };
 
-  const onCollectionSave = (collections: string[]) => {
+  const onCollectionSave = (collections: Collection[]) => {
     setContent((prev) => ({ ...prev, collections }));
     setCollectionsOpen(false);
   };

@@ -1,10 +1,12 @@
 import { FC, ReactNode } from 'react';
 
+import { Collection } from 'src/types/model';
+
 interface Props {
   selected: boolean;
   children: ReactNode;
-  collection: string;
-  onClick: (title: string) => void;
+  collection: Collection;
+  onClick: (title: Collection) => void;
 }
 
 const CollectionTag: FC<Props> = ({

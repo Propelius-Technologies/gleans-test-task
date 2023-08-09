@@ -1,13 +1,13 @@
 'use client';
 import { ChangeEventHandler, FC, useState } from 'react';
 
-import { Content } from 'src/types/model';
+import { Content, Tag } from 'src/types/model';
 import { tags } from 'src/constants/dummy.constants';
 
 import ImageAdder from './ImageAdder';
 import CustomButton from 'src/components/shared/CustomButton';
 import Icon from 'src/components/shared/Icon';
-import Tag from './Tag';
+import TagChip from './Tag';
 
 import textStyles from 'src/styles/typography.module.css';
 import styles from './styles.module.css';
@@ -46,12 +46,14 @@ const ContentDetails: FC<Props> = ({
     moveBack();
   };
 
-  const handleTagSelect = (tagToAdd: string) => {
+  const handleTagSelect = (tagToAdd: Tag) => {
     onContentUpate({ tags: [...content.tags, tagToAdd] });
   };
 
-  const handleTagUnselect = (tagToRemove: string) => {
-    onContentUpate({ tags: content.tags.filter((tag) => tag !== tagToRemove) });
+  const handleTagUnselect = (tagToRemove: Tag) => {
+    onContentUpate({
+      tags: content.tags.filter((tag) => tag.id !== tagToRemove.id),
+    });
   };
 
   const handleSave = () => {
@@ -121,9 +123,9 @@ const ContentDetails: FC<Props> = ({
         {!descriptionExpanded && (
           <div className='flex justify-center flex-wrap gap-x-3 gap-y-3 pt-7 pb-16'>
             {tags.map((tag) => (
-              <Tag
-                key={tag}
-                title={tag}
+              <TagChip
+                key={tag.id}
+                tag={tag}
                 onSelect={handleTagSelect}
                 onUnselect={handleTagUnselect}
               />

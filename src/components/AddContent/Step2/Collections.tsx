@@ -1,26 +1,39 @@
 'use client';
-import { collections } from '@/constants/dummy.constants';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+
+import { Collection } from 'src/types/model';
+import { collections } from 'src/constants/dummy.constants';
+import supabase from 'src/supabase/supabas.utils';
 
 import CustomButton from 'src/components/shared/CustomButton';
-
-import textStyles from 'src/styles/typography.module.css';
 import CollectionTag from './CollectionTag';
 
+import textStyles from 'src/styles/typography.module.css';
+
 interface Props {
-  defaultCollections: string[];
-  onSave: (selectedCollections: string[]) => void;
+  defaultCollections: Collection[];
+  onSave: (selectedCollections: Collection[]) => void;
 }
 
 const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
-  const [selectedCollections, setSelectedCollections] = useState<string[]>(defaultCollections);
+  const [selectedCollections, setSelectedCollections] =
+    useState<Collection[]>(defaultCollections);
 
-  const handleSelectCollection = (collectionToAdd: string) => {
-    let newCollections: string[] = [...selectedCollections];
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await supabase.from('collections').select('*');
+      console.log(res);
+    };
+
+    fetch();
+  }, []);
+
+  const handleSelectCollection = (collectionToAdd: Collection) => {
+    let newCollections: Collection[] = [...selectedCollections];
 
     if (selectedCollections.includes(collectionToAdd)) {
       newCollections = newCollections.filter(
-        (collection) => collection !== collectionToAdd
+        (collection) => collection.id !== collectionToAdd.id
       );
     } else {
       newCollections = [...newCollections, collectionToAdd];
@@ -45,12 +58,12 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
       <div className='flex flex-col gap-y-5 items-center'>
         {collections.map((collection) => (
           <CollectionTag
-            key={collection}
+            key={collection.id}
             collection={collection}
             onClick={handleSelectCollection}
             selected={selectedCollections.includes(collection)}
           >
-            {collection}
+            {collection.name}
           </CollectionTag>
         ))}
       </div>

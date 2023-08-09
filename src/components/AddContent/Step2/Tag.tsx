@@ -1,31 +1,33 @@
 'use client';
 import { FC, useState } from 'react';
 
+import { Tag } from 'src/types/model';
+
 import Icon from 'src/components/shared/Icon';
 
 interface Props {
-  title: string;
-  onSelect?: (x: string) => void;
-  onUnselect?: (x: string) => void;
+  tag: Tag;
+  onSelect?: (x: Tag) => void;
+  onUnselect?: (x: Tag) => void;
 }
 
-const Tag: FC<Props> = ({ title, onSelect, onUnselect }) => {
+const TagChip: FC<Props> = ({ onSelect, onUnselect, tag }) => {
   const [selected, setSelected] = useState<boolean>(false);
 
   const handleSelect = () => {
     setSelected(true);
 
-    onSelect && onSelect(title);
+    onSelect && onSelect(tag);
   };
 
   const handleUnselect = () => {
     setSelected(false);
-    onUnselect && onUnselect(title);
+    onUnselect && onUnselect(tag);
   };
 
   return (
     <div className='bg-ga-grey bg-opacity-10 rounded-full bg flex text-sm gap-x-2 items-center px-3 h-9 text-white font-primary'>
-      {title}
+      {tag.name}
       <div className=' items-center flex gap-x-2'>
         {' '}
         {!selected && (
@@ -48,4 +50,4 @@ const Tag: FC<Props> = ({ title, onSelect, onUnselect }) => {
   );
 };
 
-export default Tag;
+export default TagChip;
