@@ -5,11 +5,11 @@ import { motion } from 'framer-motion'
 import { Collection } from 'src/types/model'
 
 import CustomButton from 'src/components/shared/CustomButton'
-import CollectionTag from './CollectionTag'
 
 import textStyles from 'src/styles/typography.module.css'
 import { useCollections } from 'src/services/collections/collections.hooks'
 import Loader from 'src/components/shared/Loader'
+import CollectionTag from '@/components/AddContent/Step2/CollectionTag'
 
 interface Props {
   defaultCollections: Collection[]

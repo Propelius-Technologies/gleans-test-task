@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
 
 import { Content, Tag } from 'src/types/model'
 
-import ImageAdder from './ImageAdder'
 import CustomButton from 'src/components/shared/CustomButton'
 import Icon from 'src/components/shared/Icon'
-import TagChip from './Tag'
 
 import textStyles from 'src/styles/typography.module.css'
 import styles from './styles.module.css'
 import { useTags } from '@/services/tags/tags.hooks'
 import { removeHtmlTags } from 'src/utils/strings.utils'
+import ImageAdder from '@/components/AddContent/Step2/ImageAdder'
+import TagChip from '@/components/AddContent/Step2/Tag'
 
 interface Props {
   content: Content

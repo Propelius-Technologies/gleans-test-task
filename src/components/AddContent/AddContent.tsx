@@ -1,10 +1,10 @@
 'use client'
 import { useState } from 'react'
 
-import Done from './DonePage'
-import Step1 from './Step1/Step1'
-import Step2 from './Step2/Step2'
 import { AnimatePresence, motion } from 'framer-motion'
+import Done from '@/components/AddContent/DonePage'
+import Step1 from '@/components/AddContent/Step1/Step1'
+import Step2 from '@/components/AddContent/Step2/Step2'
 
 const AddContent = () => {
   const [activeStep, setActiveStep] = useState<number>(1)

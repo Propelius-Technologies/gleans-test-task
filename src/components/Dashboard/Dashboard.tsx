@@ -1,4 +1,4 @@
-import AddContent from '../AddContent/AddContent'
+import AddContent from '@/components/AddContent/AddContent'
 
 const Dashboard = () => {
   return (

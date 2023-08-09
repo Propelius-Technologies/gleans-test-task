@@ -1,10 +1,11 @@
 'use client'
 import textStyles from 'src/styles/typography.module.css'
-import Option from './Option'
-import LinkInput from './LinkInput'
+
 import { FC } from 'react'
 import { motion } from 'framer-motion'
 import { LocalStorageKeys } from '@/constants/keys.constants'
+import Option from '@/components/AddContent/Step1/Option'
+import LinkInput from '@/components/AddContent/Step1/LinkInput'
 
 interface Props {
   moveToStep: (step: number) => void

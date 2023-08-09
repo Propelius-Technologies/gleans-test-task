@@ -3,13 +3,13 @@ import { FC, useState } from 'react'
 
 import { Collection, Content } from 'src/types/model'
 
-import Collections from './Collections'
-import ContentDetails from './ContentDetails'
 import { isEmpty } from 'lodash'
 import { getLinkMeta } from '@/utils/storage.utils'
 import { convertMetaToContent } from '@/utils/content.utils'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { addContent } from '@/services/content/content.services'
+import Collections from '@/components/AddContent/Step2/Collections'
+import ContentDetails from '@/components/AddContent/Step2/ContentDetails'
 
 const defaultContent: Content = {
   title: 'Very very long title or collection name',
