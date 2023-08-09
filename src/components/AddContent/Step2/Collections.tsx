@@ -3,13 +3,13 @@ import { FC, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { Collection } from 'src/types/model';
-import { collections } from 'src/constants/dummy.constants';
-import supabase from 'src/supabase/supabas.utils';
 
 import CustomButton from 'src/components/shared/CustomButton';
 import CollectionTag from './CollectionTag';
 
 import textStyles from 'src/styles/typography.module.css';
+import { useCollections } from 'src/services/collections/collections.hooks';
+import Loader from 'src/components/shared/Loader';
 
 interface Props {
   defaultCollections: Collection[];
@@ -20,13 +20,10 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
   const [selectedCollections, setSelectedCollections] =
     useState<Collection[]>(defaultCollections);
 
-  useEffect(() => {
-    const fetch = async () => {
-      const res = await supabase.from('collections').select('*');
-      console.log(res);
-    };
+  const { getCollections, collections, loading } = useCollections();
 
-    fetch();
+  useEffect(() => {
+    getCollections();
   }, []);
 
   const handleSelectCollection = (collectionToAdd: Collection) => {
@@ -56,7 +53,10 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
           Collections
         </h3>
       </div>
-      <div className='flex flex-col gap-y-5 items-center'>
+
+      {loading && <Loader className='text-white' />}
+
+     {!loading && <div className='flex flex-col gap-y-5 items-center'>
         {collections.map((collection, i) => (
           <motion.div
             initial={{ y: '-100%' }}
@@ -74,7 +74,7 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
             </CollectionTag>
           </motion.div>
         ))}
-      </div>
+      </div>}
       <div className='flex pb-12'>
         <CustomButton onClick={handleSave} color='primary'>
           Save

@@ -9,7 +9,7 @@ import { isEmpty } from 'lodash';
 import { getLinkMeta } from '@/utils/storage.utils';
 import { convertMetaToContent } from '@/utils/content.utils';
 import { AnimatePresence, motion } from 'framer-motion';
-import { addContent } from '@/services/content.services';
+import { addContent } from '@/services/content/content.services';
 
 const defaultContent: Content = {
   title: 'Very very long title or collection name',
@@ -43,12 +43,12 @@ const Step2: FC<Props> = ({ moveToStep }) => {
   const toggleCollections = () => setCollectionsOpen((prev) => !prev);
 
   const onContentSave = async () => {
-    // const res = await addContent(content);
+    const res = await addContent(content);
 
-    // if (!res.success) {
-    //   alert('glean not added');
-    //   return;
-    // }
+    if (!res.success) {
+      alert('glean not added');
+      return;
+    }
 
     moveToStep(3);
   };

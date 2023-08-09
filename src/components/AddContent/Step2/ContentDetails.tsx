@@ -1,9 +1,8 @@
 'use client';
-import { ChangeEventHandler, FC, useRef, useState } from 'react';
+import { ChangeEventHandler, FC, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { Content, Tag } from 'src/types/model';
-import { tags } from 'src/constants/dummy.constants';
 
 import ImageAdder from './ImageAdder';
 import CustomButton from 'src/components/shared/CustomButton';
@@ -12,6 +11,7 @@ import TagChip from './Tag';
 
 import textStyles from 'src/styles/typography.module.css';
 import styles from './styles.module.css';
+import { useTags } from '@/services/tags/tags.hooks';
 
 interface Props {
   content: Content;
@@ -32,6 +32,12 @@ const ContentDetails: FC<Props> = ({
   const [titleTouched, setTitleTouched] = useState<boolean>(false);
   const [descriptionExpanded, setDescriptionExpanded] =
     useState<boolean>(false);
+
+  const { getTags, tags, loading } = useTags();
+
+  useEffect(() => {
+    getTags();
+  }, []);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (evt) => {
     const { value, id } = evt.target;
@@ -161,7 +167,7 @@ const ContentDetails: FC<Props> = ({
         {!descriptionExpanded && (
           <p
             onClick={toggleCollections}
-            className={`${textStyles.subtitle_1_normal} text-white cursor-pointer font-primary flex items-center gap-x-1`}
+            className={`${textStyles.subtitle_1_normal} pb-4 text-white cursor-pointer font-primary flex items-center gap-x-1`}
           >
             Add to collection
             <Icon name='collection_icon' className='w-3 h-2' color='#5E5E5E' />
