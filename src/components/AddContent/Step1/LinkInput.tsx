@@ -1,5 +1,6 @@
 'use client';
 import { LocalStorageKeys } from '@/constants/keys.constants';
+import { setLinkMeta } from '@/utils/storage.utils';
 import { ChangeEventHandler, FC, FormEventHandler, useState } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
@@ -32,14 +33,11 @@ const LinkInput: FC<Props> = ({ handleSubmit }) => {
       const res = await fetch(
         `https://jsonlink.io/api/extract?url=${inputValue}`
       );
-
       const parsedRes = await res.json();
-      localStorage.setItem(
-        LocalStorageKeys.LINK_META,
-        JSON.stringify(parsedRes)
-      );
 
-      handleSubmit()
+      setLinkMeta(parsedRes);
+
+      handleSubmit();
     } catch (err) {
       console.log('error fetching link');
     } finally {

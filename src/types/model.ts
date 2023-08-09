@@ -5,3 +5,12 @@ export interface Content {
   tags: string[];
   collections: string[];
 }
+
+export interface LinkMeta {
+  title: string;
+  description: string;
+  images: string[];
+  duration: number;
+  domain: string;
+  url: string;
+}
