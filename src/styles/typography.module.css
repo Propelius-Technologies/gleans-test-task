@@ -1,0 +1,15 @@
+.heading_1 {
+  @apply text-32px font-normal;
+}
+
+.subtitle_1_bold {
+  @apply text-sm font-medium;
+}
+
+.subtitle_1_normal {
+  @apply text-sm font-normal;
+}
+
+.button_text {
+  @apply text-base font-medium;
+}
