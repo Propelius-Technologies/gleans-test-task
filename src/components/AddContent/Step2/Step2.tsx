@@ -55,7 +55,7 @@ const Step2: FC<Props> = ({ moveToStep }) => {
   const moveBack = () => moveToStep(1);
 
   return (
-    <div className='fixed top-0 left-0 min-h-screen w-full flex flex-col items-center justify-between pt-16 px-7'>
+    <div className='fixed top-0 left-0 bottom-0 overflow-y-scroll min-h-screen w-full flex flex-col items-center justify-between pt-16 px-7'>
       <AnimatePresence mode='wait'>
         {collectionOpen ? (
           <Collections
