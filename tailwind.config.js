@@ -14,6 +14,8 @@ module.exports = {
       },
       colors: {
         'ga-grey': '#d9d9d9',
+        'ga-text-gray': '#b9b9b9',
+        'ga-button-grey': '#2A2A2A',
       },
       fontFamily: {
         primary: ['var(--font-roboto)'],

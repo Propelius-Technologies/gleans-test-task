@@ -1,0 +1,16 @@
+.descriptionContainer {
+  height: 80px;
+  width: 290px;
+  @apply overflow-hidden relative;
+}
+
+.expanded {
+  @apply w-full p-6 rounded-3xl bg-ga-grey bg-opacity-10;
+}
+
+.fadingParagraph {
+  background: linear-gradient(to top, transparent, white 40%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
