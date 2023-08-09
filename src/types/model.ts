@@ -1,5 +1,5 @@
 export interface Content {
-  media?: string;
+  image?: string;
   title: string;
   description: string;
   tags: string[];

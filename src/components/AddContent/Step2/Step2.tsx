@@ -5,6 +5,9 @@ import { Content } from 'src/types/model';
 
 import Collections from './Collections';
 import ContentDetails from './ContentDetails';
+import { isEmpty } from 'lodash';
+import { getLinkMeta } from '@/utils/storage.utils';
+import { convertMetaToContent } from '@/utils/content.utils';
 
 const defaultContent: Content = {
   title: 'Very very long title or collection name',
@@ -20,7 +23,11 @@ interface Props {
 
 const Step2: FC<Props> = ({ moveToStep }) => {
   const [collectionOpen, setCollectionsOpen] = useState<boolean>(false);
-  const [content, setContent] = useState<Content>(defaultContent);
+  const [content, setContent] = useState<Content>(
+    isEmpty(getLinkMeta())
+      ? defaultContent
+      : convertMetaToContent(getLinkMeta())
+  );
 
   const handleContentUpdate = (content: Partial<Content>) => {
     setContent((prev) => ({ ...prev, ...content }));
