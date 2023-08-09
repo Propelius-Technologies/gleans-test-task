@@ -46,8 +46,8 @@ export const getGradientColors = (hex: string): [string, string] => {
 
   l = +l.toFixed(0)
 
-  const pastelColor = `hsl(${h}, ${40}%, ${Math.max(0, l - 20)}%)`;
-  const saturatedColor = `hsl(${h}, ${80}%, ${20}%)`;
+  const pastelColor = `hsl(${h* 0.8}, ${s * 1.3}%, ${50}%)`;
+  const saturatedColor = `hsl(${h}, ${s * 0.4}%, ${l * 0.9}%)`;
 
   return [pastelColor, saturatedColor];
 };

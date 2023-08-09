@@ -29,7 +29,7 @@ const ImageAdder: FC<Props> = ({ contentImage, contentTitle }) => {
     <div
       className='bg-cover w-60 aspect-square rounded-3xl flex flex-col gap-y-4 items-center justify-center'
       style={{
-        background: `radial-gradient(121.30% 121.30% at 50.43% -0.00%, ${gradientColors[0]} 0%, ${gradientColors[1]} 100%), rgba(0, 0, 0, 0.20)`,
+        background: `radial-gradient(121.30% 121.30% at 50.43% -0.00%, ${gradientColors[0]} 0%, ${gradientColors[1]} 100%)`,
       }}
     >
       {!contentImage ? (

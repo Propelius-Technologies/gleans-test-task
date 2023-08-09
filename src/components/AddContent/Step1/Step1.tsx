@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Step1: FC<Props> = ({ moveToStep }) => {
-  const handleSubmit =  () => {
+  const handleSubmit = () => {
     moveToStep(2);
   };
 
@@ -36,7 +36,7 @@ const Step1: FC<Props> = ({ moveToStep }) => {
           title='Create a Glean'
           description='Add content, links & descriptive text'
           onClick={() => {
-            localStorage.removeItem(LocalStorageKeys.LINK_META);
+            localStorage && localStorage.removeItem(LocalStorageKeys.LINK_META);
             moveToStep(2);
           }}
         />

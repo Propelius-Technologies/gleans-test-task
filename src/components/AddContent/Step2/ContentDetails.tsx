@@ -146,7 +146,7 @@ const ContentDetails: FC<Props> = ({
               !descriptionExpanded ? styles.fadingParagraph : ''
             } break-words`}
           >
-            {removeHtmlTags(content.description)}
+            {removeHtmlTags(content.description || '')}
           </div>
         </div>
 
