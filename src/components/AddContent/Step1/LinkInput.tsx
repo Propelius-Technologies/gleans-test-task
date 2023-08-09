@@ -19,7 +19,7 @@ const LinkInput: FC<Props> = ({ handleSubmit }) => {
   };
 
   return (
-    <div className='flex gap-x-2 relative items-center rounded-full w-full py-5 px-4 bg-ga-grey bg-opacity-10'>
+    <div className='font-primary flex gap-x-2 relative items-center rounded-full w-full py-5 px-4 bg-ga-grey bg-opacity-10'>
       <p className='text-xl'>🔗</p>
 
       <div className='h-full w-full'>

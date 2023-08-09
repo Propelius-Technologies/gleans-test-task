@@ -16,8 +16,7 @@ module.exports = {
         'ga-grey': '#d9d9d9',
       },
       fontFamily: {
-        primary: 'Roboto',
-        seconday: 'Helvetica'
+        primary: ['var(--font-roboto)'],
       },
       fontSize: {
         '32px': '2rem',

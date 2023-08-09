@@ -15,12 +15,12 @@ const Option: FC<Props> = ({ title, description, src, onClick }) => {
     <div onClick={onClick} className='w-32'>
       <Image src={src} alt='' className='w-full aspect-square' />
       <h5
-        className={`${textStyles.subtitle_1_bold} text-center text-white py-3`}
+        className={`${textStyles.subtitle_1_bold} font-primary text-center text-white py-3`}
       >
         {title}
       </h5>
       <p
-        className={`${textStyles.subtitle_1_normal} text-center text-white text-opacity-70`}
+        className={`${textStyles.subtitle_1_normal} font-primary text-center text-white text-opacity-70`}
       >
         {description}
       </p>

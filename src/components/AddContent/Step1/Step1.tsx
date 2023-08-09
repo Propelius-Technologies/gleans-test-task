@@ -35,8 +35,8 @@ const Step1 = () => {
 
       <LinkInput handleSubmit={handleSubmit} />
 
-      <p className='mt-4 text-white text-opacity-70 text-center w-11/12 mx-auto'>
-        <strong>Powered by Gleans Ai</strong> ✨ Create content automatically
+      <p className='mt-4 font-primary text-white text-opacity-70 text-center w-11/12 mx-auto'>
+        <strong className='font-medium'>Powered by Gleans Ai</strong> ✨ Create content automatically
         and make changes if needed.
       </p>
     </div>
