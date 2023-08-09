@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import textStyles from 'src/styles/typography.module.css';
 
-type ButtonColor = 'primary' | 'secondary';
+type ButtonColor = 'primary' | 'secondary' | 'success';
 
 export type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -20,6 +20,8 @@ const getButtonColor = (color: ButtonColor) => {
       return 'bg-white text-black';
     case 'secondary':
       return 'bg-ga-button-grey text-whtie text-opacity-30';
+    case 'success':
+      return 'bg-ga-success text-white';
   }
 };
 
