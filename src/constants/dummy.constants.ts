@@ -7,3 +7,4 @@ export const collections: string[] = [
   'Wild Stuff',
   'Zapier Hacks',
 ];
+export const tags: string[] = ['Test', 'Detailed', 'Dance', 'Desgin', 'UX'];
