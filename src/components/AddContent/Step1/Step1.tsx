@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import textStyles from 'src/styles/typography.module.css';
 import styles from './styles.module.css';
 import Option from './Option';
@@ -34,6 +34,11 @@ const Step1 = () => {
       </div>
 
       <LinkInput handleSubmit={handleSubmit} />
+
+      <p className='mt-4 text-white text-opacity-70 text-center w-11/12 mx-auto'>
+        <strong>Powered by Gleans Ai</strong> ✨ Create content automatically
+        and make changes if needed.
+      </p>
     </div>
   );
 };
