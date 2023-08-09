@@ -12,7 +12,16 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      animation: {
+        blur: 'blur 400ms ease-in-out forwards',
+      },
+      keyframes: {
+        blur: {
+          '0%': { 'backdrop-filter': 'blur(0px)' },
+          '100%': { 'backdrop-filter': 'blur(50px)' },
+        },
+      },
     },
   },
   plugins: [],
-}
+};
