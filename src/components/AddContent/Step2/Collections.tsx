@@ -68,7 +68,7 @@ const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
             <CollectionTag
               collection={collection}
               onClick={handleSelectCollection}
-              selected={selectedCollections.includes(collection)}
+              selected={!!selectedCollections.find(({id}) => collection.id === id )}
             >
               {collection.name}
             </CollectionTag>

@@ -1,0 +1,6 @@
+.linkFade {
+  background: linear-gradient(to left, transparent, white);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

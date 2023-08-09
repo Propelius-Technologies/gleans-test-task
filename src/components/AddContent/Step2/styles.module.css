@@ -9,7 +9,7 @@
 }
 
 .fadingParagraph {
-  background: linear-gradient(to top, transparent, white 40%);
+  background: linear-gradient(to top, transparent, white);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

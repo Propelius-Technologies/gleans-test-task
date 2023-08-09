@@ -32,7 +32,7 @@ const TagChip: FC<Props> = ({ onSelect, onUnselect, tag, index, selectedDefault}
     <motion.div
       animate={{ opacity: [0, 1] }}
       transition={{ delay: 0.15 * index }}
-      className='bg-ga-grey bg-opacity-10 rounded-full bg flex text-sm gap-x-2 items-center px-3 h-9 text-white font-primary'
+      className='bg-ga-grey bg-opacity-20 rounded-full bg flex text-sm gap-x-2 items-center px-3 h-9 text-white font-primary'
     >
       {tag.name}
       <div className=' items-center flex gap-x-2'>
