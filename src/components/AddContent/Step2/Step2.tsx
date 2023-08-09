@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Content } from 'src/types/model';
 
@@ -14,7 +14,11 @@ const defaultContent: Content = {
     'This is where a detailed scraped description would appear in a glean or collection. If it gets too long, it will start to fade out so that editors can think free and edit the text if needed.',
 };
 
-const Step2 = () => {
+interface Props {
+  moveToStep: (step: number) => void;
+}
+
+const Step2: FC<Props> = ({ moveToStep }) => {
   const [collectionOpen, setCollectionsOpen] = useState<boolean>(false);
   const [content, setContent] = useState<Content>(defaultContent);
 
@@ -29,6 +33,9 @@ const Step2 = () => {
 
   const toggleCollections = () => setCollectionsOpen((prev) => !prev);
 
+  const onContentSave = () => moveToStep(3);
+  const moveBack = () => moveToStep(1);
+
   return (
     <div className='fixed top-0 left-0 min-h-screen w-full flex flex-col items-center justify-between pt-16 px-7'>
       {collectionOpen ? (
@@ -41,6 +48,8 @@ const Step2 = () => {
           content={content}
           toggleCollections={toggleCollections}
           onContentUpate={handleContentUpdate}
+          onContentSave={onContentSave}
+          moveBack={moveBack}
         />
       )}
     </div>

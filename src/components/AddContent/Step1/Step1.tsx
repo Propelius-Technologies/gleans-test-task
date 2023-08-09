@@ -3,10 +3,14 @@ import textStyles from 'src/styles/typography.module.css';
 import styles from './styles.module.css';
 import Option from './Option';
 import LinkInput from './LinkInput';
+import { FC } from 'react';
+interface Props {
+  moveToStep: (step: number) => void;
+}
 
-const Step1 = () => {
+const Step1: FC<Props> = ({ moveToStep }) => {
   const handleSubmit = () => {
-    console.log('submited');
+    moveToStep(2);
   };
 
   return (
@@ -25,6 +29,7 @@ const Step1 = () => {
           src=''
           title='Create a Glean'
           description='Add content, links & descriptive text'
+          onClick={() => moveToStep(2)}
         />
         <Option
           src=''
@@ -36,8 +41,8 @@ const Step1 = () => {
       <LinkInput handleSubmit={handleSubmit} />
 
       <p className='mt-4 font-primary text-white text-opacity-70 text-center w-11/12 mx-auto'>
-        <strong className='font-medium'>Powered by Gleans Ai</strong> ✨ Create content automatically
-        and make changes if needed.
+        <strong className='font-medium'>Powered by Gleans Ai</strong> ✨ Create
+        content automatically and make changes if needed.
       </p>
     </div>
   );

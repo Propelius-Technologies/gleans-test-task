@@ -16,12 +16,16 @@ interface Props {
   content: Content;
   toggleCollections: () => void;
   onContentUpate: (body: Partial<Content>) => void;
+  onContentSave: () => void;
+  moveBack: () => void;
 }
 
 const ContentDetails: FC<Props> = ({
   content,
   onContentUpate,
+  onContentSave,
   toggleCollections,
+  moveBack,
 }) => {
   const [titleTouched, setTitleTouched] = useState<boolean>(false);
   const [descriptionExpanded, setDescriptionExpanded] =
@@ -38,6 +42,8 @@ const ContentDetails: FC<Props> = ({
       setDescriptionExpanded(false);
       return;
     }
+
+    moveBack();
   };
 
   const handleTagSelect = (tagToAdd: string) => {
@@ -46,6 +52,12 @@ const ContentDetails: FC<Props> = ({
 
   const handleTagUnselect = (tagToRemove: string) => {
     onContentUpate({ tags: content.tags.filter((tag) => tag !== tagToRemove) });
+  };
+
+  const handleSave = () => {
+    if (!descriptionExpanded) {
+      onContentSave();
+    }
   };
 
   return (
@@ -132,7 +144,7 @@ const ContentDetails: FC<Props> = ({
         <CustomButton onClick={handleBack} color='secondary'>
           Back
         </CustomButton>
-        <CustomButton color='primary'>
+        <CustomButton onClick={handleSave} color='primary'>
           {!descriptionExpanded ? 'Add Glean' : 'save'}
         </CustomButton>
       </div>
