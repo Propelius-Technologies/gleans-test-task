@@ -7,7 +7,7 @@ import Step2 from './Step2/Step2';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const AddContent = () => {
-  const [activeStep, setActiveStep] = useState<number>(1);
+  const [activeStep, setActiveStep] = useState<number>(2);
 
   const moveToStep = (step: number) => setActiveStep(step);
 

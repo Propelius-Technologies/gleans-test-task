@@ -12,6 +12,7 @@ import TagChip from './Tag';
 import textStyles from 'src/styles/typography.module.css';
 import styles from './styles.module.css';
 import { useTags } from '@/services/tags/tags.hooks';
+import { removeHtmlTags } from 'src/utils/strings.utils';
 
 interface Props {
   content: Content;
@@ -131,7 +132,7 @@ const ContentDetails: FC<Props> = ({
           onClick={() => setDescriptionExpanded(true)}
           className={`${
             descriptionExpanded ? styles.expanded : styles.descriptionContainer
-          } transition-all ease-linear duration-100`}
+          } transition-all ease-linear break-words duration-100`}
         >
           <div
             ref={descriptionRef}
@@ -140,9 +141,11 @@ const ContentDetails: FC<Props> = ({
               descriptionExpanded ? 'pb-0' : 'absolute'
             } w-full pb-2 m-0 font-primary text-ga-text-gray text-center outline-none ${
               textStyles.subtitle_1_normal
-            } ${!descriptionExpanded ? styles.fadingParagraph : ''}`}
+            } ${
+              !descriptionExpanded ? styles.fadingParagraph : ''
+            } break-words`}
           >
-            {content.description}
+            {removeHtmlTags(content.description)}
           </div>
         </div>
 

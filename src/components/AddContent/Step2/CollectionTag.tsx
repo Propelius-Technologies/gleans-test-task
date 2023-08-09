@@ -19,7 +19,7 @@ const CollectionTag: FC<Props> = ({
     <div
       onClick={() => onClick(collection)}
       className={`rounded-full select-none p-6 cursor-pointer flex items-center text-white text-opacity-50 justify-center ${
-        selected ? 'bg-ga-grey bg-opacity-10 opa text-opacity-100' : ''
+        selected ? 'bg-ga-grey bg-opacity-20 text-opacity-100' : ''
       } h-9`}
     >
       {children}
