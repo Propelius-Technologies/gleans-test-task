@@ -19,7 +19,6 @@ const Step2 = () => {
   const [content, setContent] = useState<Content>(defaultContent);
 
   const handleContentUpdate = (content: Partial<Content>) => {
-
     setContent((prev) => ({ ...prev, ...content }));
   };
 
@@ -33,7 +32,10 @@ const Step2 = () => {
   return (
     <div className='fixed top-0 left-0 min-h-screen w-full flex flex-col items-center justify-between pt-16 px-7'>
       {collectionOpen ? (
-        <Collections onSave={onCollectionSave} />
+        <Collections
+          defaultCollections={content.collections}
+          onSave={onCollectionSave}
+        />
       ) : (
         <ContentDetails
           content={content}

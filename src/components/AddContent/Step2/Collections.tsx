@@ -8,11 +8,12 @@ import textStyles from 'src/styles/typography.module.css';
 import CollectionTag from './CollectionTag';
 
 interface Props {
+  defaultCollections: string[];
   onSave: (selectedCollections: string[]) => void;
 }
 
-const Collections: FC<Props> = ({ onSave }) => {
-  const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
+const Collections: FC<Props> = ({ onSave, defaultCollections }) => {
+  const [selectedCollections, setSelectedCollections] = useState<string[]>(defaultCollections);
 
   const handleSelectCollection = (collectionToAdd: string) => {
     let newCollections: string[] = [...selectedCollections];
