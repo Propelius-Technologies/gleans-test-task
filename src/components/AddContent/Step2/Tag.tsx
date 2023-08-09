@@ -9,12 +9,13 @@ import Icon from 'src/components/shared/Icon';
 interface Props {
   tag: Tag;
   index: number;
+  selectedDefault?: boolean;
   onSelect?: (x: Tag) => void;
   onUnselect?: (x: Tag) => void;
 }
 
-const TagChip: FC<Props> = ({ onSelect, onUnselect, tag, index }) => {
-  const [selected, setSelected] = useState<boolean>(false);
+const TagChip: FC<Props> = ({ onSelect, onUnselect, tag, index, selectedDefault}) => {
+  const [selected, setSelected] = useState<boolean>(!!selectedDefault);
 
   const handleSelect = () => {
     setSelected(true);

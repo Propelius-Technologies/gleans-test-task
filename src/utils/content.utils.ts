@@ -6,7 +6,7 @@ export const convertMetaToContent = (meta: LinkMeta): Content => ({
   description: meta.description,
   tags: [],
   title: meta.title,
-  image: meta.images[0],
+  image: meta.images?.length ? meta.images[0] : '',
 });
 
 export const getRandomEmojies = () =>

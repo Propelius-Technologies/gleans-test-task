@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEventHandler, FC, useState } from 'react';
+import { ChangeEventHandler, FC, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { Content, Tag } from 'src/types/model';
@@ -28,6 +28,7 @@ const ContentDetails: FC<Props> = ({
   toggleCollections,
   moveBack,
 }) => {
+  const descriptionRef = useRef<HTMLDivElement>(null);
   const [titleTouched, setTitleTouched] = useState<boolean>(false);
   const [descriptionExpanded, setDescriptionExpanded] =
     useState<boolean>(false);
@@ -40,6 +41,10 @@ const ContentDetails: FC<Props> = ({
 
   const handleBack = () => {
     if (descriptionExpanded) {
+      if (descriptionRef.current) {
+        descriptionRef.current.innerHTML = content.description;
+      }
+
       setDescriptionExpanded(false);
       return;
     }
@@ -60,6 +65,11 @@ const ContentDetails: FC<Props> = ({
   const handleSave = () => {
     if (!descriptionExpanded) {
       onContentSave();
+    } else {
+      onContentUpate({
+        description: descriptionRef.current?.innerHTML,
+      });
+      setDescriptionExpanded(false);
     }
   };
 
@@ -72,7 +82,12 @@ const ContentDetails: FC<Props> = ({
           descriptionExpanded ? 'grow justify-center w-full' : ''
         }`}
       >
-        {!descriptionExpanded && <ImageAdder />}
+        {!descriptionExpanded && (
+          <ImageAdder
+            contentImage={content.image || ''}
+            contentTitle={content.title}
+          />
+        )}
         {!descriptionExpanded && (
           <div className='w-full mt-9 mb-4 max-w-60 mx-auto'>
             {!titleTouched ? (
@@ -112,15 +127,17 @@ const ContentDetails: FC<Props> = ({
             descriptionExpanded ? styles.expanded : styles.descriptionContainer
           } transition-all ease-linear duration-100`}
         >
-          <p
+          <div
+            ref={descriptionRef}
+            contentEditable={descriptionExpanded}
             className={`${
               descriptionExpanded ? 'pb-0' : 'absolute'
-            } w-full pb-2 m-0 font-primary text-ga-text-gray text-center ${
+            } w-full pb-2 m-0 font-primary text-ga-text-gray text-center outline-none ${
               textStyles.subtitle_1_normal
             } ${!descriptionExpanded ? styles.fadingParagraph : ''}`}
           >
             {content.description}
-          </p>
+          </div>
         </div>
 
         {!descriptionExpanded && (
@@ -130,6 +147,11 @@ const ContentDetails: FC<Props> = ({
                 key={tag.id}
                 index={index}
                 tag={tag}
+                selectedDefault={
+                  !!content.tags.find(
+                    (selectedTag) => selectedTag.id === tag.id
+                  )
+                }
                 onSelect={handleTagSelect}
                 onUnselect={handleTagUnselect}
               />
